@@ -1,0 +1,11 @@
+.Header-container {
+  padding: 20px 20px 0 20px;
+}
+
+.Header-title {
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: 500;
+  text-align: left;
+  text-transform: uppercase;
+}
