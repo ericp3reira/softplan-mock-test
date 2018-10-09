@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 
 class App extends Component {
   render() {
@@ -12,7 +13,7 @@ class App extends Component {
         </header>
         <div className="App-content">
           <aside className="App-sidebar">
-            sidebar
+            <Sidebar></Sidebar>
           </aside>
           <main className="App-main">
             main
