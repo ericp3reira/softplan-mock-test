@@ -12,16 +12,65 @@
   align-items: center;
   height: 140px;
   width: 100%;
+  margin-bottom: 20px;
   background-color: #ffffff;
 }
 
 .Card-add-label {
+  height: 30px;
+  width: 30px;
+}
+
+.Card-add-label-icon {
   font-size: 2em;
   font-weight: bold;
   letter-spacing: -2px;
   color: #a6a6a6;
-  height: 30px;
-  width: 30px;
+  cursor: pointer;
+}
+
+.Card-add-label-modal {
+  border: 2px solid #dddddd;
+  position: relative;
+  background-color: #ffffff;
+  width: 220px;
+  right: 190px;
+  font-size: 1em;
+  /* display: none; */
+}
+
+.Card-add-label-modal > header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.Card-close-add-label-modal {
+  font-size: 1.5em;
+  line-height: 0.7em;
+  cursor: pointer;
+}
+
+.Card-available-labels {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Card-label-to-add {
+  width: 100%;
+  padding: 5px 10px;
+  margin: 3px 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: red;
+  border-radius: 2px;
+  color: #ffffff;
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .Card-content {

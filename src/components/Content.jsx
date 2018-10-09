@@ -6,11 +6,39 @@ class Content extends Component {
     super();
   }
 
+  handleAddLabelIconClick(event) {
+    console.log(event.target);
+  }
+
   render() {
     return (
       <div className="Content-container">
         <div className="Card">
-          <div className="Card-add-label">...</div>
+          <div className="Card-add-label">
+            <div className="Card-add-label-icon" onClick={this.handleAddLabelIconClick}>
+              ...
+            </div>
+            <div className="Card-add-label-modal">
+              <header>
+                Adicionar etiqueta
+                <span className="Card-close-add-label-modal">&#10005;</span>
+              </header>
+              <div className="Card-available-labels">
+                <div className="Card-label-to-add">
+                  Dano moral<span>&#10003;</span>
+                </div>
+                <div className="Card-label-to-add">
+                  Dano moral<span>&#10003;</span>
+                </div>
+                <div className="Card-label-to-add">
+                  Dano moral<span>&#10003;</span>
+                </div>
+                <div className="Card-label-to-add">
+                  Dano moral<span>&#10003;</span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="Card-content">
             <section className="Card-content-a">
               <div className="fake-text-a"></div>
