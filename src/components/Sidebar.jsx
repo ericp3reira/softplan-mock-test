@@ -5,6 +5,7 @@ class Sidebar extends Component {
   constructor() {
     super();
     this.state = {
+      showInput: false,
       labels: [
         {
           name: 'Despacho',
@@ -14,6 +15,7 @@ class Sidebar extends Component {
       ]
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleNewLabel = this.toggleNewLabel.bind(this);
   };
 
   handleSubmit(event) {
@@ -37,6 +39,14 @@ class Sidebar extends Component {
     });
 
     event.target['0'].value = '';
+
+    this.toggleNewLabel();
+  }
+
+  toggleNewLabel() {
+    this.setState({
+      showInput: !this.state.showInput
+    });
   }
 
   render() {
@@ -61,12 +71,12 @@ class Sidebar extends Component {
             {labels}
             <li className="Sidebar-list-item">
               <form onSubmit={this.handleSubmit}>
-                <input type="text" name="sidebarNewLabel" className="Sidebar-new-label-input"/>
+                <input type="text" name="sidebarNewLabel" className={`Sidebar-new-label-input ${this.state.showInput ? 'active' : ''}`} />
               </form>
             </li>
           </ul>
-          <button className="Sidebar-button">Criar etiqueta</button>
-          <button className="Sidebar-button">Mais</button>
+          <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleNewLabel}><span>&#43;</span>Criar etiqueta</button>
+          <button className="Sidebar-list-item Sidebar-button"><span>&#8250;</span>Mais</button>
         </section>
       </div>
     );

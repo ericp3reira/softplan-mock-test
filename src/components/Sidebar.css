@@ -13,7 +13,6 @@
 
 .Sidebar-list {
   list-style: none;
-  color: #6d6d6d;
 }
 
 .Sidebar-list-item {
@@ -22,6 +21,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #6d6d6d;
 }
 
 .Sidebar-list-item > div {
@@ -39,10 +39,15 @@
 
 .Sidebar-new-label-input {
   width: 100%;
+  display: none;
+  padding: 5px 10px;
+  border: 2px solid #e6e6e6;
   font-size: 0.9em;
   font-weight: 500;
-  border: 2px solid #e6e6e6;
-  padding: 5px 10px;
+}
+
+.Sidebar-new-label-input.active {
+  display: block;
 }
 
 .item-color {
@@ -51,4 +56,26 @@
   display: inline-block;
   border-radius: 2px;
   margin-right: 10px;
+}
+
+.Sidebar-button {
+  padding: 5px 0 5px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border: none;
+  background: none;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Sidebar-button > span {
+  display: inline-block;
+  width: 20px;
+  border-radius: 2px;
+  margin-right: 10px;
+  font-size: 1.8em;
+  font-weight: 400;
 }
