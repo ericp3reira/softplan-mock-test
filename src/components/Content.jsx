@@ -9,12 +9,18 @@ class Content extends Component {
       labels: props.labels || []
     };
     this.toggleModal = this.toggleModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   toggleModal() {
-    console.log(this.state.isModalOpen);
     this.setState({
       isModalOpen: !this.state.isModalOpen
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      isModalOpen: false
     });
   }
 
@@ -50,7 +56,7 @@ class Content extends Component {
               <div className={`Card-add-label-modal ${this.state.isModalOpen ? 'active' : null}`}>
                 <header>
                   Adicionar etiqueta
-                  <span className="Card-close-add-label-modal">&#10005;</span>
+                  <span className="Card-close-add-label-modal" onClick={this.closeModal}>&#10005;</span>
                 </header>
                 <ul className="Card-available-labels">
                   {availableLabels}
