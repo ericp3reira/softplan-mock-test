@@ -27,6 +27,7 @@
 .Sidebar-list-item > div {
   display: flex;
   align-items: center;
+  word-wrap: break-word;
 }
 
 .Sidebar-list-item > span {
@@ -51,7 +52,7 @@
 }
 
 .item-color {
-  width: 20px;
+  min-width: 20px;
   height: 8px;
   display: inline-block;
   border-radius: 2px;
@@ -78,4 +79,8 @@
   margin-right: 10px;
   font-size: 1.8em;
   font-weight: 400;
+}
+
+.Sidebar-button > span.rotated {
+  transform: rotate(90deg);
 }

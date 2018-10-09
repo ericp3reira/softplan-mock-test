@@ -6,6 +6,7 @@ class Sidebar extends Component {
     super();
     this.state = {
       showInput: false,
+      showMore: false,
       labels: [
         {
           name: 'Despacho',
@@ -14,8 +15,10 @@ class Sidebar extends Component {
         }
       ]
     };
+    this.newLabelInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleNewLabel = this.toggleNewLabel.bind(this);
+    this.toggleMore = this.toggleMore.bind(this);
   };
 
   handleSubmit(event) {
@@ -47,6 +50,16 @@ class Sidebar extends Component {
     this.setState({
       showInput: !this.state.showInput
     });
+
+    setTimeout(() => {
+      this.newLabelInput.current.focus();
+    }, 10);
+  }
+
+  toggleMore() {
+    this.setState({
+      showMore: !this.state.showMore
+    });
   }
 
   render() {
@@ -71,12 +84,19 @@ class Sidebar extends Component {
             {labels}
             <li className="Sidebar-list-item">
               <form onSubmit={this.handleSubmit}>
-                <input type="text" name="sidebarNewLabel" className={`Sidebar-new-label-input ${this.state.showInput ? 'active' : ''}`} />
+                <input 
+                  type="text"
+                  ref={this.newLabelInput}
+                  className={`Sidebar-new-label-input ${this.state.showInput ? 'active' : ''}`} />
               </form>
             </li>
           </ul>
-          <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleNewLabel}><span>&#43;</span>Criar etiqueta</button>
-          <button className="Sidebar-list-item Sidebar-button"><span>&#8250;</span>Mais</button>
+          <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleNewLabel}>
+            <span className={this.state.showInput ? 'rotated' : null}>&#43;</span>Criar etiqueta  
+          </button>
+          <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleMore}>
+            <span className={this.state.showMore ? 'rotated' : null}>&#8250;</span>Mais
+          </button>
         </section>
       </div>
     );
