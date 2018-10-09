@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import './Sidebar.css';
 
 class Sidebar extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       showInput: false,
       showMore: false,
-      labels: [
-        {
-          name: 'Despacho',
-          color: '#808080',
-          counter: 0
-        }
-      ]
+      labels: props.labels || []
     };
     this.newLabelInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,13 +26,11 @@ class Sidebar extends Component {
     }
 
     const label = event.target['0'].value;
-    
-    this.setState({
-      labels: [...this.state.labels, {
-        name: label,
-        color: randomColor(),
-        counter: 0
-      }]
+
+    this.props.createLabel({
+      name: label,
+      color: randomColor(),
+      counter: 0
     });
 
     event.target['0'].value = '';
@@ -92,7 +84,7 @@ class Sidebar extends Component {
             </li>
           </ul>
           <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleNewLabel}>
-            <span className={this.state.showInput ? 'rotated' : null}>&#43;</span>Criar etiqueta  
+            <span>&#43;</span>Criar etiqueta  
           </button>
           <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleMore}>
             <span className={this.state.showMore ? 'rotated' : null}>&#8250;</span>Mais

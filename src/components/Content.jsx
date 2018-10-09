@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './Content.css';
 
 class Content extends Component {
-  constructor() {
+  constructor(props) {
     super();
+    this.state = {
+      labels: props.labels || []
+    };
   }
 
   handleAddLabelIconClick(event) {
@@ -11,6 +14,14 @@ class Content extends Component {
   }
 
   render() {
+    const availableLabels = this.state.labels.map((label, index) => {
+      return (
+        <li key={index} className="Card-label-to-add" style={{backgroundColor: label.color}}>
+          {label.name}<span>&#10003;</span>
+        </li>
+      );
+    });
+
     return (
       <div className="Content-container">
         <div className="Card">
@@ -23,20 +34,9 @@ class Content extends Component {
                 Adicionar etiqueta
                 <span className="Card-close-add-label-modal">&#10005;</span>
               </header>
-              <div className="Card-available-labels">
-                <div className="Card-label-to-add">
-                  Dano moral<span>&#10003;</span>
-                </div>
-                <div className="Card-label-to-add">
-                  Dano moral<span>&#10003;</span>
-                </div>
-                <div className="Card-label-to-add">
-                  Dano moral<span>&#10003;</span>
-                </div>
-                <div className="Card-label-to-add">
-                  Dano moral<span>&#10003;</span>
-                </div>
-              </div>
+              <ul className="Card-available-labels">
+                {availableLabels}
+              </ul>
             </div>
           </div>
           <div className="Card-content">
