@@ -7,7 +7,7 @@ class Sidebar extends Component {
     this.state = {
       showInput: false,
       showMore: false,
-      labels: props.labels || []
+      labels: props.labels
     };
     this.newLabelInput = React.createRef();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -72,7 +72,12 @@ class Sidebar extends Component {
         <section className="Sidebar-section">
           <h3 className="Sidebar-title">Tarefas</h3>
           <ul className="Sidebar-list">
-            <li className="Sidebar-list-item">Todos<span>0</span></li>
+            <li className="Sidebar-list-item">
+              Todos
+              <span>
+              0
+              </span>
+            </li>
             {labels}
             <li className="Sidebar-list-item">
               <form onSubmit={this.handleSubmit}>

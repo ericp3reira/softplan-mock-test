@@ -15,13 +15,25 @@ class App extends Component {
           color: '#808080',
           counter: 0
         }
+      ] || [],
+      cards: [
+        {
+          board: 'assessor',
+          label: null
+        }
       ]
     };
     this.createLabel = this.createLabel.bind(this);
+    this.updateLabel = this.updateLabel.bind(this);
   }
 
   createLabel(label) {
     this.state.labels.push(label)
+    this.forceUpdate();
+  }
+
+  updateLabel(label) {
+    label.counter++;
     this.forceUpdate();
   }
 
@@ -37,7 +49,7 @@ class App extends Component {
             <Sidebar createLabel={this.createLabel} labels={labels}></Sidebar>
           </aside>
           <main className="App-main">
-            <Content labels={labels}></Content>
+            <Content updateLabel={this.updateLabel} labels={labels}></Content>
           </main>
         </div>
       </div>
