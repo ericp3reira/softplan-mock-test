@@ -5,7 +5,18 @@ import Card from './Card';
 
 const Content = (props) => (
   <div className="Content-container">
-    <Card updateLabel={props.updateLabel} availableLabels={props.labels}></Card>
+    {
+      props.cards.map((card, index) => {
+        return (
+          <Card
+            key={index}
+            card={card}
+            updateCard={props.updateCard}
+            availableLabels={props.labels}
+          />
+        )
+      })
+    }
   </div>
 );
 

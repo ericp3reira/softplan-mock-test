@@ -67,6 +67,10 @@ class Sidebar extends Component {
       );
     });
 
+    const totalLabels = this.state.labels.reduce((total, label) => {
+      return total + label.counter;
+    }, 0);
+
     return (
       <div className="Sidebar-container">
         <section className="Sidebar-section">
@@ -75,7 +79,7 @@ class Sidebar extends Component {
             <li className="Sidebar-list-item">
               Todos
               <span>
-              0
+                {totalLabels}
               </span>
             </li>
             {labels}

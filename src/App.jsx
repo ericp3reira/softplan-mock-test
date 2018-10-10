@@ -19,12 +19,36 @@ class App extends Component {
       cards: [
         {
           board: 'assessor',
-          label: null
+          label: {
+            name: '',
+            color: ''
+          }
+        },
+        {
+          board: 'assessor',
+          label: {
+            name: '',
+            color: ''
+          }
+        },
+        {
+          board: 'assessor',
+          label: {
+            name: '',
+            color: ''
+          }
+        },
+        {
+          board: 'assessor',
+          label: {
+            name: '',
+            color: ''
+          }
         }
       ]
     };
     this.createLabel = this.createLabel.bind(this);
-    this.updateLabel = this.updateLabel.bind(this);
+    this.updateCard = this.updateCard.bind(this);
   }
 
   createLabel(label) {
@@ -32,24 +56,41 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  updateLabel(label) {
-    label.counter++;
+  updateCard(card, label) {
+    card.label = label;
+    this.recalcLabels();
     this.forceUpdate();
+  }
+
+  recalcLabels() {
+    this.state.labels.forEach(label => {
+      label.counter = 0;
+      this.state.cards.forEach(card => {
+        if (card.label === label) {
+          label.counter++;
+        }
+      });
+    });
   }
 
   render() {
     const labels = this.state.labels;
+    const cards = this.state.cards;
     return (
       <div className="App">
         <header className="App-header">
-          <Header title="Assessor"></Header>
+          <Header title="Assessor" />
         </header>
         <div className="App-content">
           <aside className="App-sidebar">
-            <Sidebar createLabel={this.createLabel} labels={labels}></Sidebar>
+            <Sidebar createLabel={this.createLabel} labels={labels} />
           </aside>
           <main className="App-main">
-            <Content updateLabel={this.updateLabel} labels={labels}></Content>
+            <Content
+              updateCard={this.updateCard}
+              labels={labels}
+              cards={cards}
+            />
           </main>
         </div>
       </div>

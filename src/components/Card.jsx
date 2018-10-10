@@ -7,10 +7,6 @@ class Card extends Component {
     this.state = {
       isModalOpen: false,
       availableLabels: props.availableLabels,
-      label: {
-        color: '',
-        name: ''
-      }
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -32,10 +28,7 @@ class Card extends Component {
   addLabel(event) {
     const labelIndex = event.target.attributes.dataindex.value;
     const label = this.state.availableLabels[labelIndex];
-    this.setState({
-      label
-    });
-    this.props.updateLabel(label);
+    this.props.updateCard(this.props.card, label);
     this.closeModal();
   }
 
@@ -58,8 +51,8 @@ class Card extends Component {
       <div className="Card">
         <div className="Card-header">
           <div className="Card-labels">
-            <div className="Card-label" style={{backgroundColor: this.state.label.color}}>
-              {this.state.label.name}
+            <div className="Card-label" style={{backgroundColor: this.props.card.label.color}}>
+              {this.props.card.label.name}
             </div>
           </div>
           <div className="Card-add-label">
