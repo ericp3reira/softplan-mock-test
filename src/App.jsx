@@ -76,6 +76,7 @@ class App extends Component {
   render() {
     const labels = this.state.labels;
     const cards = this.state.cards;
+    console.log(this.props.type);
     return (
       <div className="App">
         <header className="App-header">
@@ -83,7 +84,10 @@ class App extends Component {
         </header>
         <div className="App-content">
           <aside className="App-sidebar">
-            <Sidebar createLabel={this.createLabel} labels={labels} />
+            <Sidebar
+              createLabel={this.createLabel}
+              labels={labels}
+            />
           </aside>
           <main className="App-main">
             <Content
