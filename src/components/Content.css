@@ -3,4 +3,5 @@
   padding: 40px 50px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }

@@ -7,6 +7,7 @@ const Content = (props) => (
   <div className="Content-container">
     {
       props.cards.map((card, index) => {
+        console.log(card);
         return (
           <Card
             key={index}

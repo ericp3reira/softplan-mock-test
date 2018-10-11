@@ -1,5 +1,10 @@
 .Header-container {
   padding: 15px 25px;
+  background-color: #0063b6;
+}
+
+.Header-container.black {
+  background-color: #000000;
 }
 
 .Header-title {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -16,9 +16,7 @@ const NoMatch = ({ location }) => (
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path="/assessor" render={() => <App type='assessor' />} />
-      <Route path="/juiz" render={() => <App type='juiz' />} />
-      <Redirect from="/" to="/assessor" />
+      <Route path="/" render={() => <App type='assessor' />} />
       <Route component={NoMatch} />
     </Switch>
   </Router>,

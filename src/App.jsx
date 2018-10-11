@@ -6,9 +6,10 @@ import Sidebar from './components/Sidebar';
 import Content from './components/Content';
 
 class App extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
+      type: props.type,
       labels: [
         {
           name: 'Despacho',
@@ -45,10 +46,13 @@ class App extends Component {
             color: ''
           }
         }
-      ]
+      ],
+      typeCards: []
     };
     this.createLabel = this.createLabel.bind(this);
+    this.getCards = this.getCards.bind(this);
     this.updateCard = this.updateCard.bind(this);
+    this.sendCard = this.sendCard.bind(this);
   }
 
   createLabel(label) {
@@ -58,9 +62,23 @@ class App extends Component {
 
   updateCard(card, label) {
     card.label = label;
+    card.board = 'juiz';
     this.recalcLabels();
-    this.forceUpdate();
   }
+
+  sendCard() {
+    this.setState({
+      type: 'juiz'
+    });
+  }
+
+  getCards(type) {
+    const { cards } = this.state;
+    const validCards = cards.filter(card => {
+      return card.board === type;
+    });
+    return validCards;
+  } 
 
   recalcLabels() {
     this.state.labels.forEach(label => {
@@ -74,24 +92,26 @@ class App extends Component {
   }
 
   render() {
-    const labels = this.state.labels;
-    const cards = this.state.cards;
-    console.log(this.props.type);
+    const { type, labels } = this.state;
+    const cards = this.getCards(type);
     return (
       <div className="App">
         <header className="App-header">
-          <Header title="Assessor" />
+          <Header type={type} />
         </header>
         <div className="App-content">
           <aside className="App-sidebar">
             <Sidebar
+              type={type}
               createLabel={this.createLabel}
               labels={labels}
             />
           </aside>
           <main className="App-main">
             <Content
+              type={type}
               updateCard={this.updateCard}
+              sendCard={this.sendCard}
               labels={labels}
               cards={cards}
             />
