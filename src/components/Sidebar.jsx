@@ -92,12 +92,18 @@ class Sidebar extends Component {
               </form>
             </li>
           </ul>
-          <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleNewLabel}>
-            <span>&#43;</span>Criar etiqueta  
-          </button>
-          <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleMore}>
-            <span className={this.state.showMore ? 'rotated' : null}>&#8250;</span>Mais
-          </button>
+          {
+            this.props.type === 'assessor' ? (
+              <div>
+                <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleNewLabel}>
+                  <span>&#43;</span>Criar etiqueta  
+                </button>
+                <button className="Sidebar-list-item Sidebar-button" onClick={this.toggleMore}>
+                  <span className={this.state.showMore ? 'rotated' : null}>&#8250;</span>Mais
+                </button>
+              </div>
+            ) : null
+          }
         </section>
       </div>
     );

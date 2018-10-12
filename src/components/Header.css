@@ -1,5 +1,10 @@
 .Header-container {
   padding: 15px 25px;
+  background-color: #0063b6;
+}
+
+.Header-container.black {
+  background-color: #000000;
 }
 
 .Header-title {
@@ -8,4 +13,11 @@
   font-weight: 500;
   text-align: left;
   text-transform: uppercase;
+}
+
+.Header-container > button {
+  position: relative;
+  float: right;
+  font-size: 1em;
+  top: -20px;
 }

@@ -10,8 +10,10 @@ const Content = (props) => (
         return (
           <Card
             key={index}
+            type={props.type}
             card={card}
             updateCard={props.updateCard}
+            sendCard={props.sendCard}
             availableLabels={props.labels}
           />
         )
