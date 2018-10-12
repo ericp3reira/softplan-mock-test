@@ -7,12 +7,13 @@ const Content = (props) => (
   <div className="Content-container">
     {
       props.cards.map((card, index) => {
-        console.log(card);
         return (
           <Card
             key={index}
+            type={props.type}
             card={card}
             updateCard={props.updateCard}
+            sendCard={props.sendCard}
             availableLabels={props.labels}
           />
         )

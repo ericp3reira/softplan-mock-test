@@ -6,17 +6,17 @@ import Sidebar from './components/Sidebar';
 import Content from './components/Content';
 
 class App extends Component {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
-      type: props.type,
+      type: 'assessor',
       labels: [
         {
           name: 'Despacho',
           color: '#808080',
           counter: 0
         }
-      ] || [],
+      ],
       cards: [
         {
           board: 'assessor',
@@ -47,12 +47,12 @@ class App extends Component {
           }
         }
       ],
-      typeCards: []
     };
     this.createLabel = this.createLabel.bind(this);
     this.getCards = this.getCards.bind(this);
     this.updateCard = this.updateCard.bind(this);
     this.sendCard = this.sendCard.bind(this);
+    this.changePage = this.changePage.bind(this);
   }
 
   createLabel(label) {
@@ -62,14 +62,12 @@ class App extends Component {
 
   updateCard(card, label) {
     card.label = label;
-    card.board = 'juiz';
     this.recalcLabels();
   }
 
-  sendCard() {
-    this.setState({
-      type: 'juiz'
-    });
+  sendCard(card) {
+    card.board = 'juiz';
+    this.recalcLabels();
   }
 
   getCards(type) {
@@ -81,14 +79,26 @@ class App extends Component {
   } 
 
   recalcLabels() {
-    this.state.labels.forEach(label => {
+    const { type, labels } = this.state;
+    const cards = this.getCards(type);
+    labels.forEach(label => {
       label.counter = 0;
-      this.state.cards.forEach(card => {
-        if (card.label === label) {
+      cards.forEach(card => {
+        if (card.label === label && card.board === type) {
           label.counter++;
         }
       });
     });
+    this.forceUpdate();
+  }
+
+  changePage() {
+    this.setState({
+      type: this.state.type === 'assessor' ? 'juiz' : 'assessor'
+    });
+    setTimeout(() => {
+      this.recalcLabels();
+    }, 100);
   }
 
   render() {
@@ -97,7 +107,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Header type={type} />
+          <Header type={type} changePage={this.changePage} />
         </header>
         <div className="App-content">
           <aside className="App-sidebar">

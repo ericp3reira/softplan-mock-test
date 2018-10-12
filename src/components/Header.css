@@ -14,3 +14,10 @@
   text-align: left;
   text-transform: uppercase;
 }
+
+.Header-container > button {
+  position: relative;
+  float: right;
+  font-size: 1em;
+  top: -20px;
+}
